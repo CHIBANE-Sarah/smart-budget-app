@@ -1,0 +1,29 @@
+# src/main/resources/application.yml
+
+spring:
+  application:
+    name: smartbudget-backend    # Nom de l'application
+
+  # Configuration de la base de données H2 (temporaire)
+  datasource:
+    url: jdbc:h2:mem:smartbudgetdb   # Base en mémoire nommée "smartbudgetdb"
+    driver-class-name: org.h2.Driver
+    username: sa                      # Utilisateur par défaut H2
+    password:                         # Pas de mot de passe
+
+  # Configuration JPA/Hibernate
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop           # Crée les tables au démarrage, les supprime à l'arrêt
+    show-sql: true                    # Affiche les requêtes SQL dans la console (utile pour apprendre)
+
+  # Console H2 (interface web pour voir la base de données)
+  h2:
+    console:
+      enabled: true                   # Active la console
+      path: /h2-console               # URL d'accès : http://localhost:8080/h2-console
+
+# Port du serveur
+server:
+  port: 8080
